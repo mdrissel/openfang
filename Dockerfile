@@ -7,6 +7,8 @@ COPY crates ./crates
 COPY xtask ./xtask
 COPY agents ./agents
 COPY packages ./packages
+ENV CARGO_PROFILE_RELEASE_LTO=false \
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
 RUN cargo build --release --bin openfang
 
 FROM debian:bookworm-slim
